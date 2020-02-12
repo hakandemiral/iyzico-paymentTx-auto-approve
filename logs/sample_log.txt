@@ -1,0 +1,9 @@
+xxxxxxxxx failure 5064 Bu ödeme kırılımı önceden onaylanmıştır
+xxxxxxxxx success
+Başarılılar: xxxxxxxxx,xxxxxxxxx,xxxxxxxxx
+
+Hatalılar: xxxxxxxxx,xxxxxxxxx
+
+Başarılı: 3
+
+Hatalı: 2
