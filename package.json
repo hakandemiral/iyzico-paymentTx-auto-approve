@@ -1,0 +1,16 @@
+{
+  "name": "iyzipay-approval",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "approve": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "iyzipay": "^2.0.35",
+    "jfile": "^1.1.12"
+  }
+}
