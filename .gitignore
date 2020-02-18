@@ -3,3 +3,4 @@ node_modules
 .idea
 logs/*.txt
 !logs/sample_log.txt
+API_KEYS.js

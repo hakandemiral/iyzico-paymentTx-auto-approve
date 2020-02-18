@@ -8,6 +8,7 @@ const iyzipay = new Iyzipay(API_KEYS);
 const payments=new JFile("./paymentTxId.txt").lines;
 
 let success = [];
+let alreadyApproved = [];
 let failed = [];
 let log = "";
 
@@ -25,7 +26,7 @@ function approvalLoop () {
                     success.push(txId);
                     break;
                 case "failure":
-                    failed.push(txId);
+                    result.errorCode === "5064" ? alreadyApproved.push(txId) : failed.push(`${txId} - ${result.errorMessage}`);
                     break;
             }
         });
@@ -41,8 +42,8 @@ function approvalLoop () {
 
 function logger() {
     const date = new Date();
-    const dateString = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} ${date.getHours()}.${date.getMinutes()}.${date.getSeconds()}`;
-    log += `Başarılılar: ${success}\n\nHatalılar: ${failed}\n\nBaşarılı: ${success.length}\n\nHatalı: ${failed.length}`;
+    const dateString = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} ${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+    log += `Başarılılar: ${success}\n\nHatalılar: ${failed}\n\nÖnceden Onaylanmışlar: ${alreadyApproved}\n\nBaşarılı: ${success.length}\n\nHatalı: ${failed.length}\n\nÖnceden Onaylanmış: ${alreadyApproved.length}`;
 
     fs.writeFile(`./logs/${dateString}.txt`, log, function (err) {
         if (err) throw err;
